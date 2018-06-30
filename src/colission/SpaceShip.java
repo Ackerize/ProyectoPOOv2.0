@@ -80,7 +80,11 @@ public class SpaceShip extends Sprite {
     }
 
     public void fire() {
-        missiles.add(new Missile(x + width, y + height / 2));
+        missiles.add(new Missile(x + width, y + height));
+        missiles.add(new Missile(x + width, y - height));
+    }
+    public void DoubleFire(){
+         missiles.add(new Missile(x + width, y - height));
     }
 
     public void keyReleased(KeyEvent e) {

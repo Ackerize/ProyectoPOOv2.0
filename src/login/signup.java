@@ -53,10 +53,12 @@ public class signup extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 204));
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/User_No-.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("LOGIN");
+        jLabel3.setText("Registro de Usuario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,7 +84,7 @@ public class signup extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 0, 0);
+        jPanel2.setBounds(0, 0, 314, 457);
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -106,7 +108,7 @@ public class signup extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(586, 0, 0, 0);
+        jPanel3.setBounds(586, 0, 31, 33);
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -118,14 +120,19 @@ public class signup extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(350, 260, 240, 40);
+        jTextField1.setBounds(350, 250, 240, 40);
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Contraseña");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(350, 320, 110, 16);
+        jLabel5.setBounds(350, 310, 110, 16);
 
         jTextField2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
@@ -142,17 +149,21 @@ public class signup extends javax.swing.JFrame {
         jPasswordField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(350, 340, 240, 40);
+        jPasswordField1.setBounds(350, 330, 240, 40);
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Usuario");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(350, 240, 110, 16);
+        jLabel7.setBounds(350, 230, 110, 16);
 
         jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Registrarse");
         jButton1.setBorder(null);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -182,6 +193,14 @@ public class signup extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,15 +217,11 @@ public class signup extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */

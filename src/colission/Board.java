@@ -38,6 +38,7 @@ public class Board extends JPanel implements ActionListener {
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
+    private int TOTAL = 0;
 
     private final int[][] pos = {
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -122,7 +123,7 @@ public class Board extends JPanel implements ActionListener {
         }
 
         g.setColor(Color.WHITE);
-        g.drawString("Aliens left: " + aliens.size(), 5, 15);
+        g.drawString("Aliens left: " + TOTAL, 5, 15);
     }
 
     private void drawGameOver(Graphics g) {
@@ -197,7 +198,7 @@ public class Board extends JPanel implements ActionListener {
             if (a.isVisible()) {
                 a.move();
             } else {
-                aliens.remove(i);
+                //aliens.remove(i);
             }
         }
     }
@@ -232,6 +233,7 @@ public class Board extends JPanel implements ActionListener {
                     
                     m.setVisible(false);
                     alien.setVisible(false);
+                    TOTAL+=1;
                 }
             }
         }
