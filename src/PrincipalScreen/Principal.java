@@ -12,7 +12,7 @@ package PrincipalScreen;
 public class Principal {
     
     public static void main(String[] args) {
-       new PrincipalScreen().setVisible(true);
+       new PantallaPrincipal().setVisible(true);
     }
     
 }
