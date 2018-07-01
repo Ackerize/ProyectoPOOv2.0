@@ -67,7 +67,7 @@ public class Board extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y);
+        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y, 0, 15);
 
         initAliens();
 
@@ -80,7 +80,7 @@ public class Board extends JPanel implements ActionListener {
         aliens = new ArrayList<>();
 
         for (int[] p : pos) {
-            aliens.add(new Alien(p[0], p[1]));
+            aliens.add(new Alien(p[0], p[1], 60, 0));
         }
     }
 
@@ -229,11 +229,14 @@ public class Board extends JPanel implements ActionListener {
 
                 Rectangle r2 = alien.getBounds();
 
-                if (r1.intersects(r2)) {
-                    
-                    m.setVisible(false);
-                    alien.setVisible(false);
-                    TOTAL+=1;
+                if (r1.intersects(r2) && alien.isVisible()) {
+                    alien.setHealth(alien.getHealth() - m.getDamage());
+                    if(alien.getHealth()<=0){
+                        m.setVisible(false);
+                        alien.setVisible(false);
+                        TOTAL += 1;
+                    }
+
                 }
             }
         }

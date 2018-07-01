@@ -17,8 +17,8 @@ public class Missile extends Sprite {
     private final int BOARD_WIDTH = 390;
     private final int MISSILE_SPEED = 2;
 
-    public Missile(int x, int y) {
-        super(x, y);
+    public Missile(int x, int y, int health, int damage) {
+        super(x, y, health, damage);
 
         initMissile();
     }

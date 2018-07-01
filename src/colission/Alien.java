@@ -16,11 +16,12 @@ public class Alien extends Sprite {
 
     private final int INITIAL_X = 400;
 
-    public Alien(int x, int y) {
-        super(x, y);
+    public Alien(int x, int y, int health, int damage) {
+        super(x, y, health, damage);
 
         initAlien();
     }
+    
 
     private void initAlien() {
 
@@ -32,6 +33,7 @@ public class Alien extends Sprite {
 
         if (x < 0) {
             x = INITIAL_X;
+            visible = true;
         }
 
         x -= 1;

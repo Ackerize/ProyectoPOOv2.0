@@ -21,10 +21,11 @@ public class SpaceShip extends Sprite {
 
     private int dx;
     private int dy;
+    public int score;
     private List<Missile> missiles;
 
-    public SpaceShip(int x, int y) {
-        super(x, y);
+    public SpaceShip(int x, int y, int health, int damage) {
+        super(x, y, health, damage);
 
         initCraft();
     }
@@ -80,11 +81,11 @@ public class SpaceShip extends Sprite {
     }
 
     public void fire() {
-        missiles.add(new Missile(x + width, y + height));
-        missiles.add(new Missile(x + width, y - height));
+        missiles.add(new Missile(x + width, y + height, 0, damage));
+        missiles.add(new Missile(x + width, y - height, 0, damage));
     }
     public void DoubleFire(){
-         missiles.add(new Missile(x + width, y - height));
+         missiles.add(new Missile(x + width, y - height, 0, damage));
     }
 
     public void keyReleased(KeyEvent e) {
@@ -107,4 +108,13 @@ public class SpaceShip extends Sprite {
             dy = 0;
         }
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
 }

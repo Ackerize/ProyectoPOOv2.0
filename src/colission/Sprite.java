@@ -25,11 +25,15 @@ public class Sprite {
     protected int height;
     protected boolean visible;
     protected Image image;
+    protected int health;
+    protected int damage;
 
-    public Sprite(int x, int y) {
+    public Sprite(int x, int y, int health, int damage) {
 
         this.x = x;
         this.y = y;
+        this.health = health;
+        this.damage = damage;
         visible = true;
     }
 
@@ -68,4 +72,22 @@ public class Sprite {
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+    
+    
 }
