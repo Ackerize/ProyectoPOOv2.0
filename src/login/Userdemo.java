@@ -15,7 +15,7 @@ public class Userdemo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       new signup().setVisible(true);
+       new Login().setVisible(true);
     }
     
 }
