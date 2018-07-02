@@ -6,11 +6,6 @@
 package colission;
 
 /**
- *
- * 
- * 
- * 
- * 
  * @author Mi PC
  */
 import java.awt.event.KeyEvent;
@@ -24,14 +19,13 @@ public class SpaceShip extends Sprite {
     public int score;
     private List<Missile> missiles;
 
-    public SpaceShip(int x, int y, int health, int damage) {
-        super(x, y, health, damage);
+    public SpaceShip(int x, int y, int health, int damage, int speed) {
+        super(x, y, health, damage, speed);
 
         initCraft();
     }
 
-    private void initCraft() {
-        
+    private void initCraft() {     
         missiles = new ArrayList<>();
         loadImage("src/resources/spaceship.png");
         getImageDimensions();
@@ -81,11 +75,11 @@ public class SpaceShip extends Sprite {
     }
 
     public void fire() {
-        missiles.add(new Missile(x + width, y + height, 0, damage));
-        missiles.add(new Missile(x + width, y - height, 0, damage));
+        missiles.add(new Missile(x + width, y + height, 0, damage, speed));
+        missiles.add(new Missile(x + width, y - height, 0, damage, speed));
     }
     public void DoubleFire(){
-         missiles.add(new Missile(x + width, y - height, 0, damage));
+         missiles.add(new Missile(x + width, y - height, 0, damage, 2));
     }
 
     public void keyReleased(KeyEvent e) {

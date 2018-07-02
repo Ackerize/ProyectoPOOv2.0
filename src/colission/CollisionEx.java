@@ -23,7 +23,7 @@ public class CollisionEx extends JFrame {
     
     private void initUI() {
         
-        add(new Board());
+        add(new Board(2));
         
         setResizable(false);
         pack();

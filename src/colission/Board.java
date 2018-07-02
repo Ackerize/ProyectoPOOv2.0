@@ -39,6 +39,7 @@ public class Board extends JPanel implements ActionListener {
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
     private int TOTAL = 0;
+    private final int SPEED_MISSILE;
 
     private final int[][] pos = {
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -52,10 +53,11 @@ public class Board extends JPanel implements ActionListener {
         {820, 128}, {490, 170}, {700, 30}
     };
 
-    public Board() {
-
+    public Board(int speed) {
+        SPEED_MISSILE = speed;
         initBoard();
     }
+
 
     private void initBoard() {
 
@@ -67,7 +69,7 @@ public class Board extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y, 0, 15);
+        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y, 0, 15, SPEED_MISSILE);
 
         initAliens();
 
@@ -80,7 +82,7 @@ public class Board extends JPanel implements ActionListener {
         aliens = new ArrayList<>();
 
         for (int[] p : pos) {
-            aliens.add(new Alien(p[0], p[1], 60, 0));
+            aliens.add(new Alien(p[0], p[1], 60, 0, SPEED_MISSILE));
         }
     }
 
@@ -211,8 +213,7 @@ public class Board extends JPanel implements ActionListener {
             
             Rectangle r2 = alien.getBounds();
 
-            if (r3.intersects(r2)) {
-                
+            if (r3.intersects(r2) && alien.isVisible()) {
                 spaceship.setVisible(false);
                 alien.setVisible(false);
                 ingame = false;
@@ -231,8 +232,10 @@ public class Board extends JPanel implements ActionListener {
 
                 if (r1.intersects(r2) && alien.isVisible()) {
                     alien.setHealth(alien.getHealth() - m.getDamage());
-                    if(alien.getHealth()<=0){
-                        m.setVisible(false);
+                    System.out.println("Se le ha hecho daño al alien marik ");
+                    System.out.println("Su vida es: "+ alien.getHealth());
+                    m.setVisible(false);
+                    if(alien.getHealth()<=0){                        
                         alien.setVisible(false);
                         TOTAL += 1;
                     }
@@ -255,3 +258,4 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 }
+    

@@ -1,4 +1,4 @@
-/*
+/*      
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,11 +15,11 @@ package colission;
 public class Missile extends Sprite {
 
     private final int BOARD_WIDTH = 390;
-    private final int MISSILE_SPEED = 2;
+    private int MISSILE_SPEED;
 
-    public Missile(int x, int y, int health, int damage) {
-        super(x, y, health, damage);
-
+    public Missile(int x, int y, int health, int damage, int speed) {
+        super(x, y, health, damage, speed);
+        MISSILE_SPEED = speed;
         initMissile();
     }
     
