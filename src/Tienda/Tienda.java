@@ -45,45 +45,35 @@ public class Tienda extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\revive.png")); // NOI18N
-
         jLabel2.setText("Descripcion");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\dobleDisparo().png")); // NOI18N
 
         jLabel4.setText("Descripcion");
 
         jButton2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\velocidadAtaque.png")); // NOI18N
 
         jLabel6.setText("Descripcion");
 
         jButton3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\oro x2.png")); // NOI18N
 
         jLabel8.setText("Descripcion");
 
         jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\UCA\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\1443321603011.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
