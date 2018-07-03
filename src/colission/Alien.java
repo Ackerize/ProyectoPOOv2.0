@@ -31,7 +31,7 @@ public class Alien extends Sprite {
 
     public void move() {
 
-        if (x < 0) {
+        if (x <= 0) {
             x = INITIAL_X;
             visible = true;
             setHealth(45);

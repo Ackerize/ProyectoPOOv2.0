@@ -17,6 +17,7 @@ public class SpaceShip extends Sprite {
     private int dx;
     private int dy;
     public int score;
+    public boolean flag;
     private List<Missile> missiles;
 
     public SpaceShip(int x, int y, int health, int damage, int speed) {
@@ -71,6 +72,9 @@ public class SpaceShip extends Sprite {
 
         if (key == KeyEvent.VK_DOWN) {
             dy = 1;
+        }
+        if(key == KeyEvent.VK_ESCAPE){
+            flag = false;
         }
     }
 

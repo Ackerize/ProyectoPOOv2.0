@@ -24,6 +24,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -32,7 +34,7 @@ public class Board extends JPanel implements ActionListener {
     private Timer timer;
     private SpaceShip spaceship;
     private List<Alien> aliens;
-    private boolean ingame;
+    private boolean ingame, flag = true;
     private final int ICRAFT_X = 40;
     private final int ICRAFT_Y = 60;
     private final int B_WIDTH = 400;
@@ -142,16 +144,13 @@ public class Board extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        inGame();
-
-        updateShip();
-        updateMissiles();
-        updateAliens();
-
-        checkCollisions();
-
-        repaint();
+            inGame();
+            updateShip();
+            updateMissiles();
+            updateAliens();
+            checkCollisions();
+            repaint(); 
+        
     }
 
     private void inGame() {
@@ -160,6 +159,7 @@ public class Board extends JPanel implements ActionListener {
             timer.stop();
         }
     }
+    
 
     private void updateShip() {
 
