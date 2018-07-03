@@ -14,9 +14,9 @@ package colission;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-public class CollisionEx extends JFrame {
+public class VideoGame extends JFrame {
 
-    public CollisionEx() {
+    public VideoGame() {
         
         initUI();
     }
@@ -36,7 +36,7 @@ public class CollisionEx extends JFrame {
     public static void main(String[] args) {
         
         EventQueue.invokeLater(() -> {
-            CollisionEx ex = new CollisionEx();
+            VideoGame ex = new VideoGame();
             ex.setVisible(true);
         });
     }

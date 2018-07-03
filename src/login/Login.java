@@ -53,7 +53,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 51));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\login\\User_No-.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/User_No-.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,6 +156,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.setText("Ingresar");
         jButton1.setBorder(null);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(390, 360, 150, 40);
 
@@ -199,6 +204,10 @@ public class Login extends javax.swing.JFrame {
         dispose();
         new signup().setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
