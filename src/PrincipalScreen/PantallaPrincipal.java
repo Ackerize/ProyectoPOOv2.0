@@ -260,7 +260,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         dispose();
         EventQueue.invokeLater(() -> {
-            VideoGame ex = new VideoGame();
+            VideoGame ex = new VideoGame(2, 0,0,0);
             ex.setVisible(true);
         });
     }//GEN-LAST:event_jButton1MouseClicked

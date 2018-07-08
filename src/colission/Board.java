@@ -11,6 +11,8 @@ package colission;
  * 
  * @author Mi PC
  */
+import Pause.Pausa;
+import Tienda.Tienda;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,20 +30,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import login.RegistroUsuario;
 
 public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
     private SpaceShip spaceship;
     private List<Alien> aliens;
-    private boolean ingame, flag = true;
+    private boolean ingame, game = true;
     private final int ICRAFT_X = 40;
     private final int ICRAFT_Y = 60;
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
-    private int TOTAL = 0;
-    private final int SPEED_MISSILE;
+    private int TOTALMONEDAS = 0;
+    private int Orox2;
+    private int SPEED_MISSILE;
+    private int VIDAS;
+    private int DOBLEDISPARO;
+    private int flag = 0;
+    public Pausa pause = new Pausa();
 
     private final int[][] pos = {
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -55,8 +63,11 @@ public class Board extends JPanel implements ActionListener {
         {820, 128}, {490, 170}, {700, 30}
     };
 
-    public Board(int speed) {
+    public Board(int vidas, int dobleDisparo, int speed, int oro) {
         SPEED_MISSILE = speed;
+        VIDAS = vidas;
+        DOBLEDISPARO = dobleDisparo;
+        Orox2 = oro;
         initBoard();
     }
 
@@ -71,7 +82,7 @@ public class Board extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y, 0, 15, SPEED_MISSILE);
+        spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y, 0, 15, VIDAS, DOBLEDISPARO, SPEED_MISSILE);
 
         initAliens();
 
@@ -84,7 +95,7 @@ public class Board extends JPanel implements ActionListener {
         aliens = new ArrayList<>();
 
         for (int[] p : pos) {
-            aliens.add(new Alien(p[0], p[1], 60, 0, SPEED_MISSILE));
+            aliens.add(new Alien(p[0], p[1], 60, 0, 0, 0, 0));
         }
     }
 
@@ -127,7 +138,7 @@ public class Board extends JPanel implements ActionListener {
         }
 
         g.setColor(Color.WHITE);
-        g.drawString("Aliens left: " + TOTAL, 5, 15);
+        g.drawString("Oro: " + TOTALMONEDAS, 5, 15);
     }
 
     private void drawGameOver(Graphics g) {
@@ -150,13 +161,26 @@ public class Board extends JPanel implements ActionListener {
             updateAliens();
             checkCollisions();
             repaint(); 
-        
+            flag += 1;
     }
 
     private void inGame() {
-
-        if (!ingame) {
+        if(flag == 200){
             timer.stop();
+            System.out.println("Holaaaaaaaa");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pause.setVisible(true);
+            while(game){
+                if(pause.isFlag()){
+                    game = false;
+                    timer.start(); 
+                }  
+            }
+            
         }
     }
     
@@ -205,7 +229,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-    public void checkCollisions() {
+    public synchronized void checkCollisions() {
 
         Rectangle r3 = spaceship.getBounds();
 
@@ -232,14 +256,17 @@ public class Board extends JPanel implements ActionListener {
 
                 if (r1.intersects(r2) && alien.isVisible()) {
                     alien.setHealth(alien.getHealth() - m.getDamage());
-                    System.out.println("Se le ha hecho daño al alien marik ");
                     System.out.println("Su vida es: "+ alien.getHealth());
                     m.setVisible(false);
                     if(alien.getHealth()<=0){                        
                         alien.setVisible(false);
-                        TOTAL += 1;
+                        if(Orox2 == 1){
+                            TOTALMONEDAS += 40;
+                        }
+                        else{
+                           TOTALMONEDAS += 20; 
+                        }
                     }
-
                 }
             }
         }

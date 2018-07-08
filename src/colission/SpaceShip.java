@@ -20,8 +20,8 @@ public class SpaceShip extends Sprite {
     public boolean flag;
     private List<Missile> missiles;
 
-    public SpaceShip(int x, int y, int health, int damage, int speed) {
-        super(x, y, health, damage, speed);
+    public SpaceShip(int x, int y, int health, int damage, int vidas, int dobledisparo, int speed) {
+        super(x, y, health, damage, vidas, dobledisparo, speed);
 
         initCraft();
     }
@@ -55,7 +55,7 @@ public class SpaceShip extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_SPACE) {
-            fire();
+            Fire();
         }
 
         if (key == KeyEvent.VK_LEFT) {
@@ -78,12 +78,12 @@ public class SpaceShip extends Sprite {
         }
     }
 
-    public void fire() {
-        missiles.add(new Missile(x + width, y + height, 0, damage, speed));
-        missiles.add(new Missile(x + width, y - height, 0, damage, speed));
+    public void DoubleFire() {
+        missiles.add(new Missile(x + width, y + height, 0, damage, 0, 0, speed));
+        missiles.add(new Missile(x + width, y - height, 0, damage,0,0, speed));
     }
-    public void DoubleFire(){
-         missiles.add(new Missile(x + width, y - height, 0, damage, 2));
+    public void Fire(){
+         missiles.add(new Missile(x + width, y + height / 2, 0, damage, 0, 0, 2));
     }
 
     public void keyReleased(KeyEvent e) {

@@ -5,12 +5,16 @@
  */
 package Tienda;
 
+import colission.VideoGame;
+import java.awt.EventQueue;
+import javax.swing.JOptionPane;
 /**
  *
- * @author UCA
+ * @author DavidV
  */
 public class Tienda extends javax.swing.JFrame {
-
+    private int cant_maxRevivir = 0, cant_maxDobleDisparo = 0, cant_maxVelocidadAtaque = 0, cant_maxOrox2 = 0;
+    
     /**
      * Creates new form Tienda
      */
@@ -28,142 +32,212 @@ public class Tienda extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        LabelDobleDisparo = new javax.swing.JLabel();
+        LabelVelocidadDisparo = new javax.swing.JLabel();
+        LabelRevivir = new javax.swing.JLabel();
+        LabelOrox2 = new javax.swing.JLabel();
+        DescripcionVelocidadAtaque = new javax.swing.JLabel();
+        DescripcionRevivir = new javax.swing.JLabel();
+        DescripcionDobleDisparo = new javax.swing.JLabel();
+        DescripcionOrox2 = new javax.swing.JLabel();
+        BotonRevivir = new javax.swing.JButton();
+        BotonDobleDisparo = new javax.swing.JButton();
+        BotonVelocidadAtaque = new javax.swing.JButton();
+        BotonOrox2 = new javax.swing.JButton();
+        BotonJugarNuevamente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LabelDobleDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\dobleDisparo().png")); // NOI18N
 
-        jLabel2.setText("Descripcion");
+        LabelVelocidadDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\velocidadAtaque.png")); // NOI18N
 
-        jLabel4.setText("Descripcion");
+        LabelRevivir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/revive.png"))); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LabelOrox2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\oro x2.png")); // NOI18N
 
-        jLabel6.setText("Descripcion");
+        DescripcionVelocidadAtaque.setText("Descripcion");
 
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        DescripcionRevivir.setText("Descripcion");
 
-        jLabel8.setText("Descripcion");
+        DescripcionDobleDisparo.setText("Descripcion");
 
-        jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Buy_Button.png"))); // NOI18N
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        DescripcionOrox2.setText("Descripcion");
+
+        BotonRevivir.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonRevivir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonRevivir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonRevivirMouseClicked(evt);
+            }
+        });
+
+        BotonDobleDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonDobleDisparo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonDobleDisparo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonDobleDisparoMouseClicked(evt);
+            }
+        });
+
+        BotonVelocidadAtaque.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonVelocidadAtaque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonVelocidadAtaque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonVelocidadAtaqueMouseClicked(evt);
+            }
+        });
+
+        BotonOrox2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonOrox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonOrox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonOrox2MouseClicked(evt);
+            }
+        });
+
+        BotonJugarNuevamente.setText("Volver a jugar");
+        BotonJugarNuevamente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonJugarNuevamente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonJugarNuevamenteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(137, 137, 137))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(424, 424, 424)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 137, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel10))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(139, 139, 139)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(231, 231, 231)))
+                        .addComponent(LabelRevivir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(LabelVelocidadDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(LabelDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(LabelOrox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(BotonJugarNuevamente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LabelRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DescripcionRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(36, 36, 36))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(333, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(258, 258, 258)))
+                        .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DescripcionDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelVelocidadDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DescripcionVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelOrox2)
+                    .addComponent(DescripcionOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(BotonJugarNuevamente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonRevivirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRevivirMouseClicked
+        if(cant_maxRevivir < 3){
+            JOptionPane.showMessageDialog(null, "Objecto <REVIVIR> comprado con exito");
+            cant_maxRevivir++;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+        }
+    }//GEN-LAST:event_BotonRevivirMouseClicked
+
+    private void BotonDobleDisparoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonDobleDisparoMouseClicked
+        if(cant_maxDobleDisparo < 1){
+            JOptionPane.showMessageDialog(null, "Objecto <DOBLE DISPARO> comprado con exito");
+            cant_maxDobleDisparo++;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+        }
+    }//GEN-LAST:event_BotonDobleDisparoMouseClicked
+
+    private void BotonVelocidadAtaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVelocidadAtaqueMouseClicked
+        if(cant_maxVelocidadAtaque < 1){
+            JOptionPane.showMessageDialog(null, "Objecto <VELOCIDAD DE ATAQUE> comprado con exito");
+            cant_maxVelocidadAtaque++;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+        }
+    }//GEN-LAST:event_BotonVelocidadAtaqueMouseClicked
+
+    private void BotonOrox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonOrox2MouseClicked
+        if(cant_maxOrox2 < 1){
+            JOptionPane.showMessageDialog(null, "Objecto <ORO X2> comprado con exito");
+            cant_maxOrox2++;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+        }
+    }//GEN-LAST:event_BotonOrox2MouseClicked
+
+    private void BotonJugarNuevamenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonJugarNuevamenteMouseClicked
+        VerificarParametros();
+        EventQueue.invokeLater(() -> {
+            VideoGame ex = new VideoGame(cant_maxVelocidadAtaque, cant_maxRevivir, cant_maxDobleDisparo, cant_maxOrox2);
+            ex.setVisible(true);
+        });
+    }//GEN-LAST:event_BotonJugarNuevamenteMouseClicked
+
+    
+    private void VerificarParametros(){
+        if(cant_maxVelocidadAtaque == 1){
+            cant_maxVelocidadAtaque = 10;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -200,19 +274,19 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton BotonDobleDisparo;
+    private javax.swing.JButton BotonJugarNuevamente;
+    private javax.swing.JButton BotonOrox2;
+    private javax.swing.JButton BotonRevivir;
+    private javax.swing.JButton BotonVelocidadAtaque;
+    private javax.swing.JLabel DescripcionDobleDisparo;
+    private javax.swing.JLabel DescripcionOrox2;
+    private javax.swing.JLabel DescripcionRevivir;
+    private javax.swing.JLabel DescripcionVelocidadAtaque;
+    private javax.swing.JLabel LabelDobleDisparo;
+    private javax.swing.JLabel LabelOrox2;
+    private javax.swing.JLabel LabelRevivir;
+    private javax.swing.JLabel LabelVelocidadDisparo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,11 +6,6 @@
 package colission;
 
 /**
- *
- * 
- * 
- * 
- * 
  * @author Mi PC
  */
 import java.awt.Image;
@@ -28,14 +23,20 @@ public class Sprite {
     protected int health;
     protected int damage;
     protected int speed;
+    protected int vidas;
+    protected int DobleDisparo;
 
-    public Sprite(int x, int y, int health, int damage, int speed) {
+
+    public Sprite(int x, int y, int health, int damage,  int vidas, int DobleDisparo, int speed ){
 
         this.x = x;
         this.y = y;
         this.health = health;
         this.damage = damage;
         this.speed = speed;
+        this.DobleDisparo = DobleDisparo;
+        this.vidas = vidas;
+
         visible = true;
     }
 
@@ -98,6 +99,22 @@ public class Sprite {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-    
-    
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
+    }
+
+    public int getDobleDisparo() {
+        return DobleDisparo;
+    }
+
+    public void setDobleDisparo(int DobleDisparo) {
+        this.DobleDisparo = DobleDisparo;
+    }
+
+
 }
