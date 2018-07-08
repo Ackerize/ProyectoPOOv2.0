@@ -28,7 +28,7 @@ public class VideoGame extends JFrame {
         setResizable(false);
         pack();
         
-        setTitle("Collision");
+        setTitle("Aurelion Sol");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

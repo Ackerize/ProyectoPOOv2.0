@@ -31,11 +31,6 @@ public class ImagePanel extends javax.swing.JPanel {
         this.setSize(size);
         this.setOpaque(false);  
     }
-    
-    public static void main(String [] args){
-    
-    }
-    
     @Override
     public void paintComponent(Graphics g){
         if(this.BackGroundImage!=null){

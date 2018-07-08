@@ -49,7 +49,7 @@ public class SpaceShip extends Sprite {
     public List<Missile> getMissiles() {
         return missiles;
     }
-
+    
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
