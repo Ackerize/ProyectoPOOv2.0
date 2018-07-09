@@ -5,11 +5,14 @@
  */
 package login;
 
+import BaseDAO.UsuariosDAO;
+import Entidad.Usuario;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
- *
- * @author Mi PC
+ *Clase encargada de realizar el registro al usuario
+ * @author DavidV
  */
 public class RegistroUsuario extends javax.swing.JFrame {
 
@@ -181,6 +184,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         BotonRegistrarse.setText("Registrarse");
         BotonRegistrarse.setBorder(null);
         BotonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonRegistrarseMouseClicked(evt);
+            }
+        });
         PanelPrincipal.add(BotonRegistrarse);
         BotonRegistrarse.setBounds(430, 390, 90, 30);
 
@@ -223,47 +231,64 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void CerrarVentanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CerrarVentanaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_CerrarVentanaKeyPressed
-
+/**
+ * Si el usuario da click en la "X", se cierra la ejecucion del programa
+ * @param evt 
+ */
     private void CerrarVentanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarVentanaMouseClicked
         System.exit(0);
     }//GEN-LAST:event_CerrarVentanaMouseClicked
-
+/**
+ * Si el usuario ya esta registrado, se le enviara a la ventana de  inicio de sesion, cerrando la ventana de registro
+ * @param evt 
+ */
     private void LabelIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelIniciarSesionMouseClicked
         dispose();
         new InicioSesion().setVisible(true);
     }//GEN-LAST:event_LabelIniciarSesionMouseClicked
+/**
+ * Se ejecuta la consulta corrrespondiente, para validar que el usuario y el correo ingresados, no pertenezcan a ningun usuario en la base de datos
+ * @param evt 
+ */
+    private void BotonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegistrarseMouseClicked
+        UsuariosDAO ud = new UsuariosDAO();
+        Usuario u = ud.buscarU(UsuarioField.getText());
+        Usuario uv = ud.buscarC(CorreoElectronicoField.getText());
+        if(u == null){
+            if(uv == null){
+                u = new Usuario(UsuarioField.getText(), convertir(PasswordField.getPassword()), CorreoElectronicoField.getText());
+                if (ud.insertar(u)) {
+                    JOptionPane.showMessageDialog(null, "Registro Completado");
+                    dispose();
+                    new InicioSesion().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ocurrió un problema con el registro");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ese correo ya existe");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario ya existe");
+        }
+    }//GEN-LAST:event_BotonRegistrarseMouseClicked
+/**
+ * Convierte el contenido del campo en donde se introduce la contraseña a String
+ * @param pass el arreglo de char que devuelve el campo de la contraseña
+ * @return nueva, el arreglo de char convertido en String
+ */
+    private String convertir(char[] pass){
+        String nueva = "";
+        for(int i =0; i < pass.length; i++){
+            nueva += pass[i];
+        }
+        return nueva;
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroUsuario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrarse;

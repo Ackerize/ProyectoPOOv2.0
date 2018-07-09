@@ -5,10 +5,14 @@
  */
 package login;
 
+import BaseDAO.UsuariosDAO;
+import Entidad.Usuario;
+import PrincipalScreen.PantallaPrincipal;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase encargada de loggear al usuario a la ventana inicial del videojuego 
  * @author DavidV
  */
 public class InicioSesion extends javax.swing.JFrame {
@@ -156,6 +160,11 @@ public class InicioSesion extends javax.swing.JFrame {
         BotonIngresar.setText("Ingresar");
         BotonIngresar.setBorder(null);
         BotonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonIngresarMouseClicked(evt);
+            }
+        });
         BotonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonIngresarActionPerformed(evt);
@@ -195,11 +204,17 @@ public class InicioSesion extends javax.swing.JFrame {
     private void TextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldUsuarioActionPerformed
-
+/**
+ * Si el usuario presiona la "x", la ejecucion del programa termina
+ * @param evt 
+ */
     private void CerrarVentanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarVentanaMouseClicked
         System.exit(0);
     }//GEN-LAST:event_CerrarVentanaMouseClicked
-
+/**
+ * Si el usuario aun no esta registrado, se le enviara a la ventana de registro, cerrando la ventana de inicio de sesion
+ * @param evt 
+ */
     private void LabelRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelRegistroMouseClicked
         dispose();
         new RegistroUsuario().setVisible(true);
@@ -208,43 +223,38 @@ public class InicioSesion extends javax.swing.JFrame {
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonIngresarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+/**
+ * Si el usuario presiona el boton, inmediatamente se ejecuta la consulta en donde se valida que las credenciales existan en la base de datos
+ * @param evt 
+ */
+    private void BotonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonIngresarMouseClicked
+        UsuariosDAO ud = new UsuariosDAO();
+        Usuario u = ud.buscarU(TextFieldUsuario.getText());
+        if(u == null){
+            JOptionPane.showMessageDialog(null, "El usuario ingresado no existe");
+        } else {
+            if(convertir(PasswordField.getPassword()).equals(u.getPass())){
+                dispose();
+                PantallaPrincipal pp = new PantallaPrincipal(u.getUser());
+                pp.setVisible(true);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            else{
+                JOptionPane.showMessageDialog(null, "Contraseña invalida");
+            }
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InicioSesion().setVisible(true);
-            }
-        });
+    }//GEN-LAST:event_BotonIngresarMouseClicked
+/**
+ * Convierte el contenido del campo en donde se introduce la contraseña a String
+ * @param pass el arreglo de char que devuelve el campo de la contraseña
+ * @return nueva, el arreglo de char convertido en String
+ */
+        private String convertir(char[] pass){
+        String nueva = "";
+        for(int i =0; i < pass.length; i++){
+            nueva += pass[i];
+        }
+        return nueva;
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JLabel CerrarVentana;

@@ -5,20 +5,25 @@
  */
 package Tienda;
 
-import colission.VideoGame;
+import VideoGame.VideoGame;
 import java.awt.EventQueue;
 import javax.swing.JOptionPane;
 /**
- *
+ *Clase encargada de crear la Tienda del videojuego en donde el usuario podra adquirir diversos items segun las monedas recolectadas
  * @author DavidV
  */
 public class Tienda extends javax.swing.JFrame {
-    private int cant_maxRevivir = 0, cant_maxDobleDisparo = 0, cant_maxVelocidadAtaque = 0, cant_maxOrox2 = 0;
+    private int cant_maxRevivir = 0, cant_maxDobleDisparo = 0, cant_maxVelocidadAtaque = 2, cant_maxOrox2 = 0, monedasUser;
+    public int costoRevivir = 1000, costoDobleDisparo = 500, costoVelocidadAtaque = 600, costoOrox2 = 900;
+    private String player, url;
     
     /**
      * Creates new form Tienda
      */
-    public Tienda() {
+    public Tienda(String name, String image, int monedas) {
+        player = name;
+        url = image;
+        monedasUser = monedas;
         initComponents();
     }
 
@@ -36,35 +41,55 @@ public class Tienda extends javax.swing.JFrame {
         LabelVelocidadDisparo = new javax.swing.JLabel();
         LabelRevivir = new javax.swing.JLabel();
         LabelOrox2 = new javax.swing.JLabel();
-        DescripcionVelocidadAtaque = new javax.swing.JLabel();
-        DescripcionRevivir = new javax.swing.JLabel();
-        DescripcionDobleDisparo = new javax.swing.JLabel();
-        DescripcionOrox2 = new javax.swing.JLabel();
+        TituloFervor = new javax.swing.JLabel();
+        TituloRevivir = new javax.swing.JLabel();
+        TituloRompefilas = new javax.swing.JLabel();
+        TituloOrox2 = new javax.swing.JLabel();
         BotonRevivir = new javax.swing.JButton();
         BotonDobleDisparo = new javax.swing.JButton();
         BotonVelocidadAtaque = new javax.swing.JButton();
         BotonOrox2 = new javax.swing.JButton();
-        BotonJugarNuevamente = new javax.swing.JButton();
+        DescripcionRevivir1 = new javax.swing.JLabel();
+        DescripcionRevivir2 = new javax.swing.JLabel();
+        DescripcionOro1 = new javax.swing.JLabel();
+        DescripcionOro2 = new javax.swing.JLabel();
+        DescripcionRompefilas1 = new javax.swing.JLabel();
+        DescripcionFervor1 = new javax.swing.JLabel();
+        DescripcionRompefilas2 = new javax.swing.JLabel();
+        DescripcionFervor2 = new javax.swing.JLabel();
+        BotonAgain = new javax.swing.JLabel();
+        LabelAgain = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        IconoTitulo = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        LabelDobleDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\dobleDisparo().png")); // NOI18N
+        LabelDobleDisparo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dobleshot.png"))); // NOI18N
 
-        LabelVelocidadDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\velocidadAtaque.png")); // NOI18N
+        LabelVelocidadDisparo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/velocidadataque.png"))); // NOI18N
 
         LabelRevivir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/revive.png"))); // NOI18N
 
-        LabelOrox2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\oro x2.png")); // NOI18N
+        LabelOrox2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/orox2.png"))); // NOI18N
 
-        DescripcionVelocidadAtaque.setText("Descripcion");
+        TituloFervor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        TituloFervor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloFervor.setText("FERVOR");
 
-        DescripcionRevivir.setText("Descripcion");
+        TituloRevivir.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        TituloRevivir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloRevivir.setText("REVIVIR");
 
-        DescripcionDobleDisparo.setText("Descripcion");
+        TituloRompefilas.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        TituloRompefilas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloRompefilas.setText("ROMPEFILAS");
 
-        DescripcionOrox2.setText("Descripcion");
+        TituloOrox2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        TituloOrox2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloOrox2.setText("ORO X2");
 
-        BotonRevivir.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonRevivir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/comprar.png"))); // NOI18N
         BotonRevivir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonRevivir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,7 +97,7 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        BotonDobleDisparo.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonDobleDisparo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/comprar.png"))); // NOI18N
         BotonDobleDisparo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonDobleDisparo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,7 +105,7 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        BotonVelocidadAtaque.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonVelocidadAtaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/comprar.png"))); // NOI18N
         BotonVelocidadAtaque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonVelocidadAtaque.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,7 +113,7 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        BotonOrox2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DavidV\\Documents\\NetBeansProjects\\ProyectoPOOv2.0\\src\\resources\\Buy_Button.png")); // NOI18N
+        BotonOrox2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/comprar.png"))); // NOI18N
         BotonOrox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonOrox2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,13 +121,36 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        BotonJugarNuevamente.setText("Volver a jugar");
-        BotonJugarNuevamente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonJugarNuevamente.addMouseListener(new java.awt.event.MouseAdapter() {
+        DescripcionRevivir1.setText("Este item te proporciona vidas extras, lo cual te puede ser ");
+
+        DescripcionRevivir2.setText("muy util para sobrevivir mas tiempo. COSTO -> 1000g ");
+
+        DescripcionOro1.setText("Este item multiplica todas tus monedas ganadas x2, muy util");
+
+        DescripcionOro2.setText("para comprar items extras. COSTO -> 900g");
+
+        DescripcionRompefilas1.setText("Este item te duplica los disparos cada vez que dispares");
+
+        DescripcionFervor1.setText("Este item te proporciona 500% de velocidad de disparo");
+
+        DescripcionRompefilas2.setText("COSTO -> 500g");
+
+        DescripcionFervor2.setText("COSTO -> 600g");
+
+        BotonAgain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/return.png"))); // NOI18N
+        BotonAgain.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonAgain.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonJugarNuevamenteMouseClicked(evt);
+                BotonAgainMouseClicked(evt);
             }
         });
+
+        LabelAgain.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        LabelAgain.setText("VOLVER A JUGAR");
+
+        IconoTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/tienda.png"))); // NOI18N
+
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/store.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,64 +158,125 @@ public class Tienda extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LabelRevivir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LabelVelocidadDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(LabelOrox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TituloOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(DescripcionRompefilas1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(DescripcionOro1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(DescripcionOro2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(DescripcionRompefilas2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(LabelVelocidadDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TituloFervor, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(DescripcionFervor2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(DescripcionFervor1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(LabelAgain))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(196, 196, 196)
+                                .addComponent(BotonAgain))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addGap(57, 57, 57)
+                                    .addComponent(IconoTitulo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(43, 43, 43))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(LabelRevivir)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TituloRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(DescripcionRevivir2)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(DescripcionRevivir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(LabelDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LabelOrox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(BotonJugarNuevamente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                        .addComponent(TituloRompefilas, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LabelRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DescripcionRevivir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IconoTitulo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelRevivir)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(TituloRevivir, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRevivir1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRevivir2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DescripcionDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(BotonDobleDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(TituloRompefilas)
+                        .addGap(3, 3, 3)
+                        .addComponent(DescripcionRompefilas1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRompefilas2)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelVelocidadDisparo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DescripcionVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonVelocidadAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(TituloFervor)
+                        .addGap(3, 3, 3)
+                        .addComponent(DescripcionFervor1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DescripcionFervor2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelOrox2)
-                    .addComponent(DescripcionOrox2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(BotonJugarNuevamente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(TituloOrox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionOro1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionOro2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabelOrox2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(36, 36, 36)
+                .addComponent(BotonAgain)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelAgain)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,110 +292,132 @@ public class Tienda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Valida que el precio del item sea menor o igual a las monedas conseguidas por el usuario, posteriormente si aun no ha alcanzado su limite
+ * @param evt 
+ */
     private void BotonRevivirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRevivirMouseClicked
-        if(cant_maxRevivir < 3){
-            JOptionPane.showMessageDialog(null, "Objecto <REVIVIR> comprado con exito");
-            cant_maxRevivir++;
+        if(monedasUser >= costoRevivir){
+            if(cant_maxRevivir < 3){
+                monedasUser -= costoRevivir; 
+                JOptionPane.showMessageDialog(null, "Objecto <REVIVIR> comprado con exito\n"
+                        + "Monedas restantes: "+monedasUser);
+                cant_maxRevivir++;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            JOptionPane.showMessageDialog(null, "Monedas insuficientes :c\n"
+                    + "Monedas actuales: "+monedasUser);
         }
     }//GEN-LAST:event_BotonRevivirMouseClicked
-
+/**
+ * Valida que el precio del item sea menor o igual a las monedas conseguidas por el usuario, posteriormente si aun no ha alcanzado su limite
+ * @param evt 
+ */
     private void BotonDobleDisparoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonDobleDisparoMouseClicked
-        if(cant_maxDobleDisparo < 1){
-            JOptionPane.showMessageDialog(null, "Objecto <DOBLE DISPARO> comprado con exito");
-            cant_maxDobleDisparo++;
+        if(monedasUser >= costoDobleDisparo){
+            if(cant_maxDobleDisparo < 1){
+                monedasUser -= costoDobleDisparo;
+                JOptionPane.showMessageDialog(null, "Objecto <ROMPEFILAS> comprado con exito\n"
+                        + "Monedas restantes: "+monedasUser);
+                cant_maxDobleDisparo++;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            JOptionPane.showMessageDialog(null, "Monedas insuficientes :c\n"
+                    + "Monedas actuales: "+monedasUser);
         }
     }//GEN-LAST:event_BotonDobleDisparoMouseClicked
-
+/**
+ * Valida que el precio del item sea menor o igual a las monedas conseguidas por el usuario, posteriormente si aun no ha alcanzado su limite
+ * @param evt 
+ */
     private void BotonVelocidadAtaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVelocidadAtaqueMouseClicked
-        if(cant_maxVelocidadAtaque < 1){
-            JOptionPane.showMessageDialog(null, "Objecto <VELOCIDAD DE ATAQUE> comprado con exito");
-            cant_maxVelocidadAtaque++;
+        if(monedasUser >= costoVelocidadAtaque){
+            if(cant_maxVelocidadAtaque == 2){
+                monedasUser -= costoVelocidadAtaque;
+                JOptionPane.showMessageDialog(null, "Objecto <FERVOR> comprado con exito\n"
+                        + "Monedas restantes: "+monedasUser);
+                cant_maxVelocidadAtaque = 10;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            JOptionPane.showMessageDialog(null, "Monedas insuficientes :c\n"
+                    + "Monedas actuales: "+monedasUser);
         }
     }//GEN-LAST:event_BotonVelocidadAtaqueMouseClicked
-
+/**
+ * Valida que el precio del item sea menor o igual a las monedas conseguidas por el usuario, posteriormente si aun no ha alcanzado su limite
+ * @param evt 
+ */
     private void BotonOrox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonOrox2MouseClicked
-        if(cant_maxOrox2 < 1){
-            JOptionPane.showMessageDialog(null, "Objecto <ORO X2> comprado con exito");
-            cant_maxOrox2++;
+        if(monedasUser >= costoOrox2){
+            if(cant_maxOrox2 < 2){
+                monedasUser -= costoOrox2;
+                JOptionPane.showMessageDialog(null, "Objecto <ORO X2> comprado con exito\n"
+                        + "Monedas restantes: "+monedasUser);
+                cant_maxOrox2+=2; 
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ya tiene el limite de compra del objecto");
+            JOptionPane.showMessageDialog(null, "Monedas insuficientes :c\n"
+                    + "Monedas actuales: "+monedasUser);
         }
     }//GEN-LAST:event_BotonOrox2MouseClicked
-
-    private void BotonJugarNuevamenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonJugarNuevamenteMouseClicked
-        VerificarParametros();
-        EventQueue.invokeLater(() -> {
-            VideoGame ex = new VideoGame(cant_maxVelocidadAtaque, cant_maxRevivir, cant_maxDobleDisparo, cant_maxOrox2);
-            ex.setVisible(true);
-        });
-    }//GEN-LAST:event_BotonJugarNuevamenteMouseClicked
+/**
+ * Cierra la ventana actual e inicia el videojuego nuevamente con las mejoras realizadas por el usuario, si es que compro items
+ * @param evt 
+ */
+    private void BotonAgainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAgainMouseClicked
+        dispose();
+        VideoGame vg = new VideoGame(player, url, cant_maxVelocidadAtaque,cant_maxRevivir,cant_maxDobleDisparo,cant_maxOrox2);
+        vg.setVisible(true);
+    }//GEN-LAST:event_BotonAgainMouseClicked
 
     
-    private void VerificarParametros(){
-        if(cant_maxVelocidadAtaque == 1){
-            cant_maxVelocidadAtaque = 10;
-        }
-    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tienda().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BotonAgain;
     private javax.swing.JButton BotonDobleDisparo;
-    private javax.swing.JButton BotonJugarNuevamente;
     private javax.swing.JButton BotonOrox2;
     private javax.swing.JButton BotonRevivir;
     private javax.swing.JButton BotonVelocidadAtaque;
-    private javax.swing.JLabel DescripcionDobleDisparo;
-    private javax.swing.JLabel DescripcionOrox2;
-    private javax.swing.JLabel DescripcionRevivir;
-    private javax.swing.JLabel DescripcionVelocidadAtaque;
+    private javax.swing.JLabel DescripcionFervor1;
+    private javax.swing.JLabel DescripcionFervor2;
+    private javax.swing.JLabel DescripcionOro1;
+    private javax.swing.JLabel DescripcionOro2;
+    private javax.swing.JLabel DescripcionRevivir1;
+    private javax.swing.JLabel DescripcionRevivir2;
+    private javax.swing.JLabel DescripcionRompefilas1;
+    private javax.swing.JLabel DescripcionRompefilas2;
+    private javax.swing.JLabel IconoTitulo;
+    private javax.swing.JLabel LabelAgain;
     private javax.swing.JLabel LabelDobleDisparo;
     private javax.swing.JLabel LabelOrox2;
     private javax.swing.JLabel LabelRevivir;
     private javax.swing.JLabel LabelVelocidadDisparo;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel TituloFervor;
+    private javax.swing.JLabel TituloOrox2;
+    private javax.swing.JLabel TituloRevivir;
+    private javax.swing.JLabel TituloRompefilas;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

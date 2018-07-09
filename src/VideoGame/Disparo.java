@@ -3,32 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package colission;
-
-
-
+package VideoGame;
 
 /**
- *
- * @author Mi PC
+ *Clase encargada del comportamiento de los disparos realizado por el jugador
+ * @author DavidV
  */
-public class Missile extends Sprite {
+public class Disparo extends Personaje {
 
-    private final int BOARD_WIDTH = 390;
+    private final int BOARD_WIDTH = 790;
     private int MISSILE_SPEED;
 
-    public Missile(int x, int y, int health, int damage, int vidas, int dobledisparo,int speed) {
+    public Disparo(int x, int y, int health, int damage, int vidas, int dobledisparo,int speed) {
         super(x, y, health, damage, vidas, dobledisparo, speed);
         MISSILE_SPEED = speed;
         initMissile();
     }
-    
+    /**
+     * Carga la imagen del disparo
+     */
     private void initMissile() {
         
-        loadImage("src/resources/missile.png");
+        loadImage("src/resources/shot.png");
         getImageDimensions();        
     }
-
+/**
+ * Se encarga del movimiento del disparo hecho
+ */
     public void move() {
         
         x += MISSILE_SPEED;

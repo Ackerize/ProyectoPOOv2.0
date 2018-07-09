@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package colission;
+package VideoGame;
 
 /**
- * @author Mi PC
+ * Clase que contiene los elementos necesarios y comunes entre todos los personajes que participan en el videojuego
+ * @author DavidV
  */
 import java.awt.Image;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
-public class Sprite {
+public class Personaje {
 
     protected int x;
     protected int y;
@@ -27,7 +28,7 @@ public class Sprite {
     protected int DobleDisparo;
 
 
-    public Sprite(int x, int y, int health, int damage,  int vidas, int DobleDisparo, int speed ){
+    public Personaje(int x, int y, int health, int damage,  int vidas, int DobleDisparo, int speed){
 
         this.x = x;
         this.y = y;
@@ -36,7 +37,6 @@ public class Sprite {
         this.speed = speed;
         this.DobleDisparo = DobleDisparo;
         this.vidas = vidas;
-
         visible = true;
     }
 
@@ -47,7 +47,6 @@ public class Sprite {
     }
 
     protected void loadImage(String imageName) {
-
         ImageIcon icon = new ImageIcon(imageName);
         image = icon.getImage();
     }

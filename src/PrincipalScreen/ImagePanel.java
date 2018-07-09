@@ -9,7 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 /**
- *
+ *Clase encargada de actualizar la etiqueta en donde muestra el personaje elegido por el usuario
  * @author CRISTIAN
  */
 public class ImagePanel extends javax.swing.JPanel {
@@ -20,7 +20,10 @@ public class ImagePanel extends javax.swing.JPanel {
     public Image getImage(){
         return this.BackGroundImage;
     }
-    
+    /**
+     * Recibe una imagen y la sustituye por la actual
+     * @param image personaje actual elegido por el usuario
+     */
     public void setImage(Image image){
         
         this.BackGroundImage = image;
@@ -31,11 +34,10 @@ public class ImagePanel extends javax.swing.JPanel {
         this.setSize(size);
         this.setOpaque(false);  
     }
-    
-    public static void main(String [] args){
-    
-    }
-    
+    /**
+     * Encargado de mostrar/actualizar la imagen de la etiqueta
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g){
         if(this.BackGroundImage!=null){

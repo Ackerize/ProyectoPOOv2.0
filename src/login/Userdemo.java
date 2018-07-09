@@ -6,8 +6,8 @@
 package login;
 
 /**
- *
- * @author Mi PC
+ *Esta es la clase principal en donde se inicia la ejecucion del programa
+ * @author DavidV
  */
 public class Userdemo {
 
